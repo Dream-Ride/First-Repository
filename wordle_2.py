@@ -1,6 +1,6 @@
 if __name__ == "__main__":
     print (" Filtrando palabras de 5 letras ")
-    diccionario = open(diccionarios.txt)
+    diccionario = open('diccionarios.txt', 'r')
     lista_palabras = []
     for linea in diccionario:
         linea = diccionario.redline()
