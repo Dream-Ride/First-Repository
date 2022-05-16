@@ -3,13 +3,13 @@ if __name__ == "__main__":
     diccionario = open('diccionarios.txt', 'r')
     lista_palabras = []
     for linea in diccionario:
-        linea = diccionario.redline()
+        linea = diccionario.readline()
         #if letras en palabra = 5 => agregar a lista
-        if len(linea) == 5:
-            lista_palabras.append(linea)
+        if len(linea) == 6:
+            lista_palabras.append(linea.strip)
             
         if linea == 1290:
             break
     #palabras = cantidad de palabras en lista_palabras
     print(" Operación comppletada con exito ")
-    print(" Se encontraron str(len(lista_palabras)) palabras de 5 letras ")
+    print(" Se encontraron " str(len(lista_palabras)) " palabras de 5 letras ")
