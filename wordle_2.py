@@ -14,34 +14,42 @@ if __name__ == "__main__":
         palabra = random.choice(listaPalabras)
         print(palabra)
 
-        entrada = input( " Escribe una palabra de 5 letras: " )
+        entrada = input( " Escribe una palabra de 5 letras: " ).casefold()
 
-        if entrada in str(listaPalabras) and len(entrada) == 5:
-            entrada = entrada
-            print(Fore.GREEN + " La palabra es valida " )
-        elif len(entrada) == 5 and entrada.isalpha() and entrada not in str(listaPalabras):
-            print(Fore.RED + " ERROR: La palabra no es valida " )
-            entrada = input(Fore.WHITE + " Introduce otra palabra: " )
-        elif len(entrada) == 5 and not entrada.isalpha():
-            print (Fore.RED + " ERROR: La palabra contiene caracteres no validos " )
-            entrada = input(Fore.WHITE + " Introduce otra palabra: " )
-        elif len(entrada) != 5 and entrada.isalpha():
-            print (Fore.RED + " ERROR: la palabra no contiene 5 letras " )
-            entrada = input(Fore.WHITE + " Introduce otra palabra: " )
-        elif len(entrada) != 5 and not entrada.isalpha():
-            print(Fore.RED + " ERROR: La palabra no contiene 5 letras ni caracteres validos " )
-            entrada = input(Fore.WHITE + " Introduce otra palabra: " )
-
-        numer_letra = 0
+        while entrada != palabra:
+            while entrada not in str(listaPalabras):
+                if len(entrada) == 5 and entrada.isalpha() and entrada not in str(listaPalabras):
+                    print(Fore.RED + " ERROR: La palabra no es valida " )
+                    entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                elif len(entrada) == 5 and not entrada.isalpha():
+                    print (Fore.RED + " ERROR: La palabra contiene caracteres no validos " )
+                    entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                elif len(entrada) != 5 and entrada.isalpha():
+                    print (Fore.RED + " ERROR: la palabra no contiene 5 letras " )
+                    entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                elif len(entrada) != 5 and not entrada.isalpha():
+                    print(Fore.RED + " ERROR: La palabra no contiene 5 letras ni caracteres validos " )
+                    entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                print(Fore.GREEN + " La palabra es valida " )
         
-        for letra in entrada:
-            if letra in palabra:
-                if letra == palabra[numer_letra]:
-                    print(Fore.GREEN + letra, end= "")
+            numer_letra = 0
+        
+            for letra in entrada:
+                if letra in palabra:
+                    if letra == palabra[numer_letra]:
+                        print(Fore.GREEN + letra, end= "")
+                    else:
+                        print(Fore.YELLOW + letra, end= "")
                 else:
-                    print(Fore.YELLOW + letra)
+                    print(Fore.RED + letra, end= "")
+                numer_letra += 1
+                if numer_letra == 5:
+                    break
+
+            if entrada == palabra:
+                break
             else:
-                print(Fore.RED + letra)
-            
-            numer_letra += 1
+                entrada = input (Fore.WHITE + " \n Introduce otra palabra: " )
+
+        print ( " La palabra es valida \n Palabara encontrada " )  
             
