@@ -19,14 +19,17 @@ def evaluar(entrada):
             break
 
 def analizar(entrada):
-    for letra in entrada and numer_letra in range (0,4):
+    numer_letra = 0
+    for letra in entrada:
         if letra in palabra:
             if letra == palabra[numer_letra]:
                 print(Fore.GREEN + letra, end= "")
             else:
                 print(Fore.YELLOW + letra, end= "")
-            if letra not in palabra:
-                print(Fore.RED + letra, end= "")
+        else:
+            print(Fore.RED + letra, end= "")
+        numer_letra += 1
+        if numer_letra == 5:
             break
 
 if __name__ == "__main__":
@@ -44,21 +47,17 @@ if __name__ == "__main__":
 
         entrada = input( " Escribe una palabra de 5 letras: " ).casefold()
         n_entrada = 0
-        evaluar(entrada)
 
         while n_entrada < 5:
-            if entrada == palabra:
-                    print (Fore.GREEN + palabra)
-                    print (Fore.WHITE + " La palabra es valida \n Palabara encontrada " )
-                    break
-            numer_letra = 0
-            numer_letra += 1
-            if numer_letra == 5:
-                entrada = input( " Introduce otra palabra " )
-                evaluar(entrada)
-                n_entrada += 1
-                break
+            evaluar(entrada)
             if n_entrada == 5 and entrada != palabra:
-                print(Fore.RED + " Perdiste " )
-
+                print(Fore.RED + " \n Perdiste " )
+                break
+            elif entrada != palabra:
+                analizar(entrada)
+                entrada = input(Fore.WHITE + " \n Introduce otra palabra: " ).casefold()
+                n_entrada += 1
+            else:
+                print (Fore.GREEN + palabra)
+                print (Fore.WHITE + " La palabra es valida \n Palabara encontrada " )
             
