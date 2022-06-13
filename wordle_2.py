@@ -34,11 +34,12 @@ if __name__ == "__main__":
     filtrar_palabras()        
     palabra = random.choice(lista_palabras)
     
-    print(Fore.WHITE + " Tienes 5 intentos para encontrar la palabra. " )
-    print(Fore.WHITE + " Si la letra aparece en " + Fore.GREEN + " verde" + Fore.WHITE + ", entonces la letra se encunetra en ese lugar. " )
-    print(Fore.WHITE + " Si la letra aparece en " + Fore.YELLOW + " amarillo" + Fore.WHITE + ", entonces la letra pertenece a la palabra pero no se encuentra en ese lugar. " )
-    print(Fore.WHITE + " Si la letra aparece en " + Fore.RED + " rojo" + Fore.WHITE + ", entonces la letra no pertenece a la palabra. " )
-    
+    print(Fore.WHITE + " Bienvenido al WORDLE. \n Adivina una palabra de 5 letras. " )
+    print(Fore.WHITE + " Si la letra aparece en" + Fore.GREEN + " verde" + Fore.WHITE + ", entonces la letra se encunetra en ese lugar. " )
+    print(Fore.WHITE + " Si la letra aparece en" + Fore.YELLOW + " amarillo" + Fore.WHITE + ", entonces la letra pertenece a la palabra pero no se encuentra en ese lugar. " )
+    print(Fore.WHITE + " Si la letra aparece en" + Fore.RED + " rojo" + Fore.WHITE + ", entonces la letra no pertenece a la palabra. " )
+    print( " Tienes 5 intentos para encontrar la palabra. " )
+
     entrada = input( " Escribe una palabra de 5 letras: " ).casefold()
     n_entrada = 0
 
@@ -63,6 +64,7 @@ if __name__ == "__main__":
             print(Fore.RED + " \n Perdiste " )
             break
         if entrada != palabra:
+            print( " Tienes " + str(4 - n_entrada) + " intentos. " )
             analizar(entrada)
             entrada = input(Fore.WHITE + " \n Introduce otra palabra: " ).casefold()
             n_entrada += 1
