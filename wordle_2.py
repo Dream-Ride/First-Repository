@@ -31,33 +31,34 @@ def analizar(entrada):
 
 if __name__ == "__main__":
 
-    print (" Filtrando palabras de 5 letras ")
-    filtrar_palabras()
-    print(" Operación completada con exito ")
-    print(" Se encontraron ", str(len(lista_palabras)), " palabras de 5 letras ")
-        
+    filtrar_palabras()        
     palabra = random.choice(lista_palabras)
-    print(palabra) 
-
-    entrada = input( " Tienes 5 intentos para encontrar la palabra. \n Escribe una palabra de 5 letras: " ).casefold()
+    
+    print(Fore.WHITE + " Tienes 5 intentos para encontrar la palabra. " )
+    print(Fore.WHITE + " Si la letra aparece en " + Fore.GREEN + " verde" + Fore.WHITE + ", entonces la letra se encunetra en ese lugar. " )
+    print(Fore.WHITE + " Si la letra aparece en " + Fore.YELLOW + " amarillo" + Fore.WHITE + ", entonces la letra pertenece a la palabra pero no se encuentra en ese lugar. " )
+    print(Fore.WHITE + " Si la letra aparece en " + Fore.RED + " rojo" + Fore.WHITE + ", entonces la letra no pertenece a la palabra. " )
+    
+    entrada = input( " Escribe una palabra de 5 letras: " ).casefold()
     n_entrada = 0
 
     for n_entrada in range (0,5):
         while entrada not in str(lista_palabras):
             if len(entrada) == 5 and entrada.isalpha() and entrada not in str(lista_palabras):
                 print(Fore.RED + " ERROR: La palabra no es valida " )
-                entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                entrada = input(Fore.WHITE + " Introduce otra palabra: " ).casefold()
             elif len(entrada) == 5 and not entrada.isalpha():
                 print (Fore.RED + " ERROR: La palabra contiene caracteres no validos " )
-                entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                entrada = input(Fore.WHITE + " Introduce otra palabra: " ).casefold()
             elif len(entrada) != 5 and entrada.isalpha():
                 print (Fore.RED + " ERROR: la palabra no contiene 5 letras " )
-                entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                entrada = input(Fore.WHITE + " Introduce otra palabra: " ).casefold()
             elif len(entrada) != 5 and not entrada.isalpha():
                 print(Fore.RED + " ERROR: La palabra no contiene 5 letras ni caracteres validos " )
-                entrada = input(Fore.WHITE + " Introduce otra palabra: " )
+                entrada = input(Fore.WHITE + " Introduce otra palabra: " ).casefold()
             else:
                 break
+
         if n_entrada == 4 and entrada != palabra:
             print(Fore.RED + " \n Perdiste " )
             break
